@@ -6,7 +6,7 @@ workflows:
           docker:
             - image: circleci/openjdk:8-jdk
           steps:
-              - checkout
+            - checkout
             - run:
                 name: Test
                 command: gradle test
@@ -16,7 +16,7 @@ workflows:
           docker:
             - image: circleci/openjdk:8-jdk
           steps:
-              - checkout
+            - checkout
             - run:
                 name: My fist package
                 command: gradle jar
