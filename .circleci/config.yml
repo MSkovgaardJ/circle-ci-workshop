@@ -9,4 +9,4 @@ jobs:
           name: My fist test
           command:  gradle test
       -store_test_results:
-                path: test-results
+           path: test-results
