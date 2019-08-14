@@ -3,7 +3,6 @@ workflows:
   two_job_flow:
   jobs:
     test:
-      build: 
       docker:
         - image: circleci/openjdk:8-jdk
       steps:
@@ -14,7 +13,6 @@ workflows:
         - store_test_results:
             path: build/test-results
     package:
-      build: 
       docker:
         - image: circleci/openjdk:8-jdk
       steps:
