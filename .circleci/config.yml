@@ -1,25 +1,35 @@
-workflows:
   version: 2.0
+  jobs:
+    test_feature:
+      docker:
+        - image: circleci/openjdk:8-jdk
+      steps:
+        - checkout
+      - run:
+          name: My fist test
+          command: | 
+            gradle test
+      - store_test_results:
+          path: build/test-results
+    package:
+      docker:
+        - image: circleci/openjdk:8-jdk
+      steps:
+        - checkout
+      - run:
+          name: My fist package
+          command: | 
+            gradle jar
+      - store_artifacts:
+          path: build/libs
+          destination: prefix
+workflow:
+  version: 2
   two_job_flow:
     jobs:
-      - test:
-          docker:
-            - image: circleci/openjdk:8-jdk
-          steps:
-            - checkout
-            - run:
-                name: Test
-                command: gradle test
-            - store_test_results:
-                path: build/test-results
+      - test_feature
       - package:
-          docker:
-            - image: circleci/openjdk:8-jdk
-          steps:
-            - checkout
-            - run:
-                name: My fist package
-                command: gradle jar
-            - store_artifacts:
-                path: build/libs
-                destination: prefix
+        requires:
+          - test_feature
+        
+         
