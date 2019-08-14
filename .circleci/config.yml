@@ -5,7 +5,7 @@
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout
-      - run:
+     	- run:
           name: My fist test
           command: | 
             gradle test
@@ -16,7 +16,7 @@
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout
-      - run:
+      	- run:
           name: My fist package
           command: | 
             gradle jar
