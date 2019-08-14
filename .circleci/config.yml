@@ -11,10 +11,16 @@ jobs:
             gradle test
       - store_test_results:
           path: build/test-results
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   package:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - checkout
       - run:
           name: My fist package
@@ -23,6 +29,10 @@ jobs:
       - store_artifacts:
           path: build/libs
           destination: prefix
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 workflows:
   version: 2
   two_job_flow:
