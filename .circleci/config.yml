@@ -5,7 +5,7 @@
         - image: circleci/openjdk:8-jdk
       steps:
         - checkout
-     	- run:
+     	  - run:
           name: My fist test
           command: | 
             gradle test
@@ -28,8 +28,6 @@ workflow:
   two_job_flow:
     jobs:
       - test_feature
-      - package:
-        requires:
-          - test_feature
+      - package
         
          
